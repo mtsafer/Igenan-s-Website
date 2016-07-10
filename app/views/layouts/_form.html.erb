@@ -1,0 +1,36 @@
+<div class="anime">	
+	<% if @anime.errors.any? %>
+		<div id="error_explanation">
+			<div class="alert alert-danger">
+				<span class="glyphicon glyphicon-alert"></span>The form contains <%= pluralize(@anime.errors.count, "error") %>.
+			</div>
+			<ul class="alert alert-warning">
+	    <% @anime.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+		</div>
+	<% end %>
+
+	<%= link_to "Back", animes_path, class: "btn btn-primary" %>
+
+	<%= form_for @anime do |f| %>
+		<%= f.label 'Title*' %>
+		<%= f.text_field :title, placeholder: 'Title', value: @anime.title %>
+		<%= f.label 'Director*' %>
+		<%= f.text_field :director, placeholder: 'Director', value: @anime.director %>
+		<%= f.label 'Year*' %>
+		<%= f.text_field :year, placeholder: 'YYYY', value: @anime.year %>
+		<%= f.label 'Length*' %>
+		<%= f.text_field :length, placeholder: '# of epsiodes', value: @anime.length %>
+		<%= f.label 'About*' %>
+		<%= f.text_area :about, placeholder: 'No spoilers please!', value: @anime.about %>
+		<%= f.label :Link %>
+		<%= f.text_field :link, placeholder: 'Where to watch the show', value: @anime.link %>
+		<%= f.label :Image %>
+		<%= f.text_field :image, placeholder: 'URL to image', value: @anime.image %>
+		<p></p>
+		<%= f.label '*  required' %>
+		<%= f.submit "Submit!", class: "btn btn-primary block" %>
+	<% end %>
+</div>

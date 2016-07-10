@@ -1,0 +1,42 @@
+<div class="anime">	
+	<h1>Anime Club</h1>
+	<%= link_to "Add Anime", new_anime_path, class: 'btn btn-primary' %>
+	<div class="panel-group" id="accordion">
+		<% @anime.each do |a| %>
+			<div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <div data-toggle="collapse" data-parent="#accordion" href="#<%=a.id%>" data-target="#<%=a.id%>">
+		        	<div class="title heading"><h2><%=a.title%></h2></div>
+		        	<div class="length heading"><%=a.length%> episodes</div>
+			        <div class="buttons">	
+			        	<a target="_blank" href="<%=full_url(a.link)%>" class="btn btn-primary clickable">Watch</a>
+			        	<%= link_to 'Edit', edit_anime_path(a), class: "btn btn-default clickable" %>
+								<%= link_to 'Delete',anime_path(a.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+							</div>
+		        </div>
+		      </h4>
+		    </div>
+		    <div id="<%=a.id%>" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      	<div class="row">
+		      		<div class="col-md-8 col-sm-7 col-xs-6 about">
+		      			<%=a.about%>
+		      			<br>
+		      			<br>
+		      			<br>
+		      			<div class="specs">
+					      	<div class="director spec"><p>Director: <%=a.director%></p></div>
+				        	<div class="year spec"><p>Year: <%=a.year%></p></div>
+		      			</div>
+		      		</div>
+		      		<div class="col-md-4 col-sm-5 col-xs-6">
+		      			<img src=<%=a.image%>>
+		      		</div>
+		      	</div>
+		      </div>
+		    </div>
+	  	</div>
+		<% end %>
+	</div>
+</div>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'videos' => 'static_pages#videos'
   get 'donations' => 'static_pages#donations'
   get 'sponsors' => 'static_pages#sponsors'
-  get 'anime' => 'static_pages#anime' #make an anime controller
-  get 'login' => 'static_pages#login' #make user controller and model
+  get 'signup' => 'static_pages#signup' #make user controller and model
+  get 'delete/:id' => 'animes#destroy'
+  resources 'animes'
 end

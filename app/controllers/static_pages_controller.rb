@@ -12,4 +12,19 @@ class StaticPagesController < ApplicationController
 	def graphic
 	end
 
+	def portfolio
+	end
+
+	def videos
+	end
+
+	def donations
+	end
+
+	def sponsors
+	end
+
+	def anime
+	end
+
 end
